@@ -71,8 +71,3 @@ class MyApp extends StatelessWidget {
 }
 
 ```
-
-```dart
-
-const like = 'sample';
-```
