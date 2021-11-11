@@ -283,6 +283,15 @@ class ListViewEx extends StatelessWidget {
           itemCount: itemCount == null ? itemCount : itemCount! + exCount,
           itemBuilder: buildItem);
     }
+
+    List<Widget> children2 = (children?.map((e) => e).toList() ??
+        <Widget>[]); //so weird,I have to do this cast,or insert will throw exception
+    if (header != null) {
+      children2.insert(0, header!);
+    }
+    if (footer != null) {
+      children2.add(footer!);
+    }
     return ListView(
       key: key,
       scrollDirection: scrollDirection,
@@ -298,7 +307,7 @@ class ListViewEx extends StatelessWidget {
       addRepaintBoundaries: addRepaintBoundaries,
       addSemanticIndexes: addSemanticIndexes,
       cacheExtent: cacheExtent,
-      children: children ?? const [],
+      children: children2,
       semanticChildCount: semanticChildCount,
       dragStartBehavior: dragStartBehavior,
       keyboardDismissBehavior: keyboardDismissBehavior,
