@@ -11,29 +11,63 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+ListViewEx is just like ListView in flutter framework.it has the same fields. All you need to do is
+replace ListView with ListViewEx,after that your got header property and footer property,they are
+just normal widget.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+![](./showcase/listview_ex.gif)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Replace your ListView with ListViewEx
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const textStyle = TextStyle(fontSize: 20);
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Material(
+        child: Container(
+          color: Colors.white,
+          child: ListViewEx(
+            header: Container(
+              height: 60,
+              alignment: Alignment.center,
+              color: Colors.red,
+              child: const Text("Header", style: textStyle),
+            ),
+            footer: Container(
+              height: 60,
+              alignment: Alignment.center,
+              color: Colors.blue,
+              child: const Text("Footer", style: textStyle),
+            ),
+            children: List<int>.generate(100, (index) => index)
+                .map((e) =>
+                SizedBox(
+                    height: 40, child: Text(e.toString(), style: textStyle)))
+                .toList(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
